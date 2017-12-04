@@ -47,14 +47,21 @@
     <Compile Include="ImporterExporter.cs" />
     <Compile Include="JsonImporterExporter.cs" />
     <Compile Include="MatchPair.cs" />
+    <Compile Include="MotherMatch.cs" />
+    <Compile Include="NameMatch.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonMatcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialSecurityMatch.cs" />
     <Compile Include="XmlImporterExporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="JSON_PersonTestSet_3.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XML_PersonTestSet_1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

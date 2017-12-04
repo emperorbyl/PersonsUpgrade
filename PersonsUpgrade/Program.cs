@@ -48,6 +48,7 @@ namespace PersonsUpgrade
                     }
                 }
             }
+            /*
             if (data1.matchList.Count > 0 && !string.IsNullOrEmpty(outFile))
                 data1.Write();
             else if (method && string.IsNullOrEmpty(outFile))
@@ -61,7 +62,7 @@ namespace PersonsUpgrade
             }
             else
                 Console.Write("There are no matches in this list.");
-
+                All of this should be inside of the Output class.*/
         }
 
 
