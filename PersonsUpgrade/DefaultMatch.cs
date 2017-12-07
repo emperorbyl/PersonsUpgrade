@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PersonsUpgrade
 {
-    public class NameMatch : MatchPair
+    class DefaultMatch : MatchPair
     {
-        public NameMatch(Person person1, Person person2)
+        public DefaultMatch(Person person1, Person person2)
         {
             personA = person1;
             personB = person2;
@@ -19,7 +19,7 @@ namespace PersonsUpgrade
             bool isMatch = false;
             try
             {
-                if (person1.FirstName == person2.FirstName && person1.MiddleName == person2.MiddleName && person1.LastName == person2.LastName)
+                if (person1.Equals(person2))
                     isMatch = true;
             }
             catch (Exception e)

@@ -8,7 +8,7 @@ namespace PersonsUpgrade
 {
     public class SocialSecurityMatch : MatchPair
     {
-        SocialSecurityMatch(Person person1, Person person2)
+        public SocialSecurityMatch(Person person1, Person person2)
         {
             personA = person1;
             personB = person2;

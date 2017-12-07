@@ -44,11 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleOutput.cs" />
+    <Compile Include="DefaultMatch.cs" />
+    <Compile Include="FileOutput.cs" />
     <Compile Include="ImporterExporter.cs" />
     <Compile Include="JsonImporterExporter.cs" />
     <Compile Include="MatchPair.cs" />
     <Compile Include="MotherMatch.cs" />
     <Compile Include="NameMatch.cs" />
+    <Compile Include="Output.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonMatcher.cs" />
     <Compile Include="Program.cs" />

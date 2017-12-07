@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,15 +23,15 @@ namespace PersonsUpgrade
             if (importerExporter == null)
                 return;
 
-            string dataFilename = args[1];
-            string algorithm = args[0];
+            string dataFilename = args[0];
+            
             string outFile = "";
-            if (args.Count() > 2)
-                outFile = args[2];
-            if (string.IsNullOrWhiteSpace(dataFilename) || algorithm == null)
+            if (args.Count() > 1)
+                outFile = args[1];
+            if (string.IsNullOrWhiteSpace(dataFilename))
                 return;
 
-            PersonMatcher data1 = new PersonMatcher() { importExport = importerExporter, filename = dataFilename, algorithmName = algorithm, outputFile = outFile };
+            PersonMatcher data1 = new PersonMatcher() { importExport = importerExporter, filename = dataFilename, algorithmName = "", outputFile = outFile };
 
             data1.importExport = importerExporter;
             data1.Read();
@@ -41,28 +42,51 @@ namespace PersonsUpgrade
                 {
                     if (person1.ObjectId != person.ObjectId)
                     {
-                        MatchPair match = new MatchPair(person1, person);
-                        method = match.Match(algorithm, person1, person);
+                        MatchPair match;
+                        if (!string.IsNullOrEmpty(person1.FirstName) && !string.IsNullOrEmpty(person.FirstName))
+                        {
+                            match = new NameMatch(person1, person);
+                        }
+                        else if(!string.IsNullOrEmpty(person.MotherFirstName) && !string.IsNullOrEmpty(person1.MotherFirstName))
+                        {
+                            match = new MotherMatch(person1, person);
+                        }
+                        else if(!string.IsNullOrEmpty(person.SocialSecurityNumber) && !string.IsNullOrEmpty(person1.SocialSecurityNumber))
+                        {
+                            match = new SocialSecurityMatch(person1, person);
+                        }
+                        else
+                        {
+                            match = new DefaultMatch(person1, person);
+                        }
+                        method = match.Match(person1, person);
                         if (method && !data1.matchList.Contains(match))
                             data1.matchList.Add(match);
                     }
                 }
             }
-            /*
+            Output output;
+
             if (data1.matchList.Count > 0 && !string.IsNullOrEmpty(outFile))
                 data1.Write();
             else if (method && string.IsNullOrEmpty(outFile))
             {
+                output = new ConsoleOutput();
+                output.DecideOutput(new StreamWriter(Console.OpenStandardOutput()));
                 foreach (var match in data1.matchList)
                 {
-                    Console.Write("Match:\n");
-                    Console.Write("ID=" + match.personA.ObjectId.ToString() + ", Name=" + match.personA.FirstName + " " + match.personA.MiddleName + " " + match.personA.LastName + ", BirthDate = " + match.personA.BirthMonth.ToString() + "/" + match.personA.BirthDay.ToString() + "/" + match.personA.BirthYear.ToString() + "\n");
-                    Console.Write("ID=" + match.personB.ObjectId.ToString() + ", Name=" + match.personB.FirstName + " " + match.personB.MiddleName + " " + match.personB.LastName + ", BirthDate = " + match.personB.BirthMonth.ToString() + "/" + match.personB.BirthDay.ToString() + "/" + match.personB.BirthYear.ToString() + "\n");
+                    string data = "Match:\n ID=" + match.personA.ObjectId.ToString() + ", Name=" + match.personA.FirstName + " " + match.personA.MiddleName + " " + match.personA.LastName + ", BirthDate = " + match.personA.BirthMonth.ToString() + "/" + match.personA.BirthDay.ToString() + "/" + match.personA.BirthYear.ToString() + "\n";
+                    data += "ID=" + match.personB.ObjectId.ToString() + ", Name=" + match.personB.FirstName + " " + match.personB.MiddleName + " " + match.personB.LastName + ", BirthDate = " + match.personB.BirthMonth.ToString() + "/" + match.personB.BirthDay.ToString() + "/" + match.personB.BirthYear.ToString() + "\n";
+                    output.Write(data);
                 }
             }
             else
-                Console.Write("There are no matches in this list.");
-                All of this should be inside of the Output class.*/
+            {
+                output = new ConsoleOutput();
+                output.DecideOutput(new StreamWriter(Console.OpenStandardOutput()));
+                string data = "There are no matches in this list.";
+                output.Write(data);
+            }
         }
 
 

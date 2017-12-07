@@ -20,7 +20,7 @@ namespace PersonsUpgrade
             {}
             return isMatch;
         }
-        MotherMatch(Person person1, Person person2)
+        public MotherMatch(Person person1, Person person2)
         {
             personA = person1;
             personB = person2;
