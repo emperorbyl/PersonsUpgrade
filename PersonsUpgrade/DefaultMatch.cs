@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonsUpgrade
 {
-    class DefaultMatch : MatchPair
+    public class DefaultMatch : MatchPair
     {
         public DefaultMatch(Person person1, Person person2)
         {

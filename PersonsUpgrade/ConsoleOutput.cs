@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PersonsUpgrade
 {
-    class ConsoleOutput : Output
+    public class ConsoleOutput : Output
     {
         public override void DecideOutput(StreamWriter stream)
         {
