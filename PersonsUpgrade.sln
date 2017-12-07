@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonsUpgrade", "PersonsUpgrade\PersonsUpgrade.csproj", "{EADD1D2F-6235-4B08-9E9F-476E759FFFBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonsUpgradeTest", "PersonsUpgradeTest\PersonsUpgradeTest.csproj", "{BCDED901-B1A6-4FEC-B0A8-B62607F2D8CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EADD1D2F-6235-4B08-9E9F-476E759FFFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EADD1D2F-6235-4B08-9E9F-476E759FFFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EADD1D2F-6235-4B08-9E9F-476E759FFFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCDED901-B1A6-4FEC-B0A8-B62607F2D8CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCDED901-B1A6-4FEC-B0A8-B62607F2D8CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCDED901-B1A6-4FEC-B0A8-B62607F2D8CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCDED901-B1A6-4FEC-B0A8-B62607F2D8CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
